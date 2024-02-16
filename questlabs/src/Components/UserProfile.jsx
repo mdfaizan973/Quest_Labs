@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 export default function UserProfile() {
   const [imgUrl, setImgUrl] = useState("");
   const [name, setName] = useState("");
-
+  const [load, setLoad] = useState(false);
   const options = {
     method: "GET",
     headers: {
@@ -15,24 +15,32 @@ export default function UserProfile() {
     },
   };
 
-  fetch(
-    "https://staging.questprotocol.xyz/api/users/u-a2399489-9cd0-4c94-ad12-568379202b08",
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => {
-      console.log(response);
-      setImgUrl(response.data.imageUrl);
-      setName(response.data.name);
-    })
-    .catch((err) => console.error(err));
+  useEffect(() => {
+    fetch(
+      "https://staging.questprotocol.xyz/api/users/u-a2399489-9cd0-4c94-ad12-568379202b08",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setImgUrl(response.data.imageUrl);
+        setLoad(true);
+        setName(response.data.name);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <DIV>
       <div className="main_container">
         <div className="img_cont">
-          <div className="img_cont2">
-            <img src={imgUrl} />
-          </div>
+          {!load ? (
+            <div className="skeleton"></div>
+          ) : (
+            <div className="img_cont2">
+              <img src={imgUrl} />
+            </div>
+          )}
         </div>
       </div>
       <div>
@@ -42,6 +50,24 @@ export default function UserProfile() {
   );
 }
 const DIV = styled.div`
+  .skeleton {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(-90deg, #f0f0f0 0%, #e0e0e0 50%, #f0f0f0 100%);
+    background-size: 200% 200%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+
   h3 {
     display: none;
   }
@@ -59,6 +85,8 @@ const DIV = styled.div`
     padding: 2px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: white;
+    display: flex;
+    justify-content: center;
   }
   .img_cont2 {
     border-radius: 50%;
