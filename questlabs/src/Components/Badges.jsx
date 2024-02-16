@@ -94,6 +94,7 @@ const DIV = styled.div`
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
   }
   .modal_background {
     position: fixed;
@@ -109,8 +110,9 @@ const DIV = styled.div`
     z-index: 1000;
   }
 
-  .ModalBackground img {
+  .modal_background img {
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
   .modal_content {
     background-color: white;
