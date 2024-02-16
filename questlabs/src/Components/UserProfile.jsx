@@ -42,6 +42,9 @@ export default function UserProfile() {
   );
 }
 const DIV = styled.div`
+  h3 {
+    display: none;
+  }
   .main_container {
     width: 100%;
     display: flex;
@@ -54,7 +57,7 @@ const DIV = styled.div`
     height: 27%;
     border-radius: 50%;
     padding: 2px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background-color: white;
   }
   .img_cont2 {

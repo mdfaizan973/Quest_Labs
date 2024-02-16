@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import UserProfile from "./UserProfile";
+import WhitePage from "./WhitePage";
 
 export default function Mobile() {
   //   const options = {
@@ -25,6 +26,7 @@ export default function Mobile() {
     <DIV>
       <h3 className="profile">Profile</h3>
       <UserProfile />
+      <WhitePage />
     </DIV>
   );
 }
