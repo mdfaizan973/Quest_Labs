@@ -30,7 +30,7 @@ const Navbar = styled.nav`
   padding: 10px 20px;
   box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
-  z-index: 1000;
+  z-index: 999;
 
   ul {
     display: flex;

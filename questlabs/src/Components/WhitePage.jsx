@@ -8,7 +8,7 @@ export default function WhitePage() {
   const [points, setPoints] = useState("");
   const [level, setLevel] = useState("");
   const [rank, setRank] = useState("");
-  const [activeComponent, setActiveComponent] = useState("Membership");
+  const [activeComponent, setActiveComponent] = useState("Badges");
   // getting name data name
   const options = {
     method: "GET",

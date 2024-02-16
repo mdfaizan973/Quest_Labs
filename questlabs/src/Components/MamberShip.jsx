@@ -20,7 +20,7 @@ const DIV = styled.div`
     transition: background-color 0.3s;
   }
   .mamber {
-    height: 30vh;
+    height: 32vh;
     width: 100%;
   }
 `;
