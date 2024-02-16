@@ -61,15 +61,15 @@ export default function WhitePage() {
       <div className="cards">
         <div className="child_card">
           <p> {points}</p>
-          Points
+          <p> Points</p>
         </div>
         <div className="child_card">
-          <p> {rank}</p>
-          Rank
+          <p> #{rank}</p>
+          <p>Rank</p>
         </div>
         <div className="child_card">
           <p>{level}</p>
-          Level
+          <p>Level</p>
         </div>
       </div>
     </DIV>
@@ -92,7 +92,7 @@ const DIV = styled.div`
   .cards {
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
+    margin-top: 15px;
   }
   .child_card {
     width: 100px;
@@ -100,11 +100,14 @@ const DIV = styled.div`
     border-radius: 10px;
     background-color: #6853f2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* font-size: 1.5rem;
+    color: white;
+  }
+  .child_card p:nth-child(1) {
+    font-size: 1.8rem;
     font-weight: bold;
     padding: 2px;
-    color: white; */
   }
 `;
