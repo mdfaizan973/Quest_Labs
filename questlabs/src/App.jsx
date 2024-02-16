@@ -1,3 +1,9 @@
+import Mobile from "./Components/Mobile";
+import "./App.css";
 export default function App() {
-  return <div>App</div>;
+  return (
+    <div>
+      <Mobile />
+    </div>
+  );
 }
