@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import UserProfile from "./UserProfile";
 import WhitePage from "./WhitePage";
+import Nav from "./Nav";
 
 export default function Mobile() {
   return (
@@ -8,6 +9,7 @@ export default function Mobile() {
       <h3 className="profile">Profile</h3>
       <UserProfile />
       <WhitePage />
+      <Nav />
     </DIV>
   );
 }

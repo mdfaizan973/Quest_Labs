@@ -3,6 +3,7 @@ export default function MamberShip() {
   return (
     <DIV>
       <button>Membership</button>
+      <div className="mamber"></div>
     </DIV>
   );
 }
@@ -17,5 +18,9 @@ const DIV = styled.div`
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+  }
+  .mamber {
+    height: 30vh;
+    width: 100%;
   }
 `;
