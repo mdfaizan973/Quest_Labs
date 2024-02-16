@@ -13,9 +13,8 @@ export default function Mobile() {
 }
 
 const DIV = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 25%;
-  border: 1px solid #ccc;
   padding: 20px;
   margin: 0 auto;
   .profile {
@@ -25,5 +24,6 @@ const DIV = styled.div`
   }
   @media (max-width: 768px) {
     width: 100%;
+    height: 100%;
   }
 `;
