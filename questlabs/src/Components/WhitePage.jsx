@@ -1,10 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
+import MamberShip from "./MamberShip";
+import Badges from "./Badges";
+import Points from "./Points";
 export default function WhitePage() {
   const [name, setName] = useState("");
   const [points, setPoints] = useState("");
   const [level, setLevel] = useState("");
   const [rank, setRank] = useState("");
+  const [activeComponent, setActiveComponent] = useState("Membership");
   // getting name data name
   const options = {
     method: "GET",
@@ -53,6 +57,21 @@ export default function WhitePage() {
       setRank(response.data.position);
     })
     .catch((err) => console.error(err));
+
+  //  active componets
+
+  const renderComponent = (component) => {
+    switch (component) {
+      case "Membership":
+        return <MamberShip />;
+      case "Badges":
+        return <Badges />;
+      case "points":
+        return <Points />;
+      default:
+        return null;
+    }
+  };
   return (
     <DIV>
       <div className="name_cont"></div>
@@ -70,6 +89,19 @@ export default function WhitePage() {
         <div className="child_card">
           <p>{level}</p>
           <p>Level</p>
+        </div>
+      </div>
+
+      <div className="main_data_container">
+        <nav>
+          <ul>
+            <li onClick={() => setActiveComponent("Membership")}>Membership</li>
+            <li onClick={() => setActiveComponent("Badges")}>Badges</li>
+            <li onClick={() => setActiveComponent("points")}>Point History</li>
+          </ul>
+        </nav>
+        <div className="active_component">
+          {activeComponent && renderComponent(activeComponent)}
         </div>
       </div>
     </DIV>
@@ -109,5 +141,28 @@ const DIV = styled.div`
     font-size: 1.8rem;
     font-weight: bold;
     padding: 2px;
+  }
+
+  .main_data_container {
+    margin-top: 30px;
+    height: 60%;
+  }
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+  }
+  nav ul li {
+    list-style: none;
+    font-weight: bold;
+    color: gray;
+    cursor: pointer;
+    transition: 0.8s ease;
+  }
+  nav ul li:hover {
+    color: #6853f2;
+    border-bottom: 2px solid #6853f2;
+  }
+  .active_component {
+    margin-top: 25px;
   }
 `;
