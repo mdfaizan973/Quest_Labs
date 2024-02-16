@@ -5,6 +5,19 @@ import Loader from "./Loader";
 export default function Badges() {
   const [badges, setBadges] = useState([]);
   const [load, setLoad] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [detail, setDetails] = useState({});
+
+  const openModal = (ele) => {
+    console.log(ele);
+    setDetails(ele);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   const options = {
     method: "GET",
     headers: {
@@ -37,11 +50,32 @@ export default function Badges() {
     <DIV>
       <div className="main_container">
         {badges.map((ele, i) => (
-          <div className="image_container" key={i}>
-            <img src={ele.imageUrl} />
+          <div
+            onClick={() => openModal(ele)}
+            className="image_container"
+            key={i}
+          >
+            <img src={ele.imageUrl} alt="image.png" />
           </div>
         ))}
       </div>
+
+      <>
+        {isOpen && (
+          <div className="modal_background" onClick={closeModal}>
+            <div className="modal_content" onClick={(e) => e.stopPropagation()}>
+              <button className="close_button" onClick={closeModal}>
+                X
+              </button>
+              <div className="img_cont">
+                <img src={detail.imageUrl} />
+              </div>
+              <h2>{detail.name}</h2>
+              <p>{detail.description}</p>
+            </div>
+          </div>
+        )}
+      </>
     </DIV>
   );
 }
@@ -60,5 +94,46 @@ const DIV = styled.div`
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
+  }
+  .modal_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .ModalBackground img {
+    width: 100%;
+  }
+  .modal_content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: 350px;
+  }
+  .close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .img_cont {
+    width: 30%;
+    margin: auto;
+    height: 30%;
+    border-radius: 50%;
+    overflow: hidden;
   }
 `;
